@@ -11,12 +11,12 @@ To build the container:
 git clone https://github.com/rjrivero/docker-openssl-ca
 cd docker-openssl-ca
 
-# To prepare
-Edit the default values for `countryName`, `stateOrProvinceName`, and `localityName`, if necessary/desired.
-
 # To build
 docker build --rm -t ${USER}/openssl-ca .
 ```
+
+# To prepare
+Edit the default values for `countryName`, `stateOrProvinceName`, and `localityName`, if necessary/desired between the above clone and built commands.
 
 To run:
 
