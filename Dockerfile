@@ -8,12 +8,14 @@ FROM rjrivero/baseimage-ssh
 
 # Sudo is not already included in phusion/baseimage; 
 #   install it if planning to connect as a non-root user
-RUN apt -q update && apt install -y \
-    sudo \
-    apt clean && rm -rf /tmp/* /var/cache/apt/*
+RUN apt -q update && \
+    DEBIAN_FRONTEND=noninteractive apt install -y && \
+        sudo && \
+    DEBIAN_FRONTEND=noninteractive apt clean && \
+    rm -rf /tmp/* /var/cache/apt/*
 
 # CA files path
-ENV CA_PATH /opt/ca
+ENV CA_PATH=/opt/ca
 VOLUME      /opt/ca
 
 # Add CA files
