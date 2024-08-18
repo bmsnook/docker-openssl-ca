@@ -11,14 +11,17 @@ To build the container:
 git clone https://github.com/rjrivero/docker-openssl-ca
 cd docker-openssl-ca
 
+# To prepare
+Edit the default values for `countryName`, `stateOrProvinceName`, and `localityName`, if necessary/desired.
+
 # To build
-docker build --rm -t rjrivero/openssl-ca .
+docker build --rm -t ${USER}/openssl-ca .
 ```
 
 To run:
 
 ```
-docker run --rm -p 2222:22 -v /opt/ca/role:/opt/ca --name ca rjrivero/openssl-ca
+docker run --rm -p 2222:22 -v /opt/ca/role:/opt/ca --name ca ${USER}/openssl-ca
 ```
 
 Volumes
@@ -81,7 +84,7 @@ sudo mkdir -p /opt/ca/sub
 docker run -d --name root-ca -p 2222:22 \
     -v /opt/ca/root:/opt/ca \
     -v </path/to/your/users_ca.pub>:/etc/ssh/users_ca.pub \
-    rjrivero/openssh-ca
+    ${USER}/openssl-ca
 ```
 
   - Log into the container as root, and create a self-signed certificate for your root CA.
@@ -98,7 +101,7 @@ sudo mkdir -p /opt/ca/sub
 docker run -d --name sub-ca -p 2222:22 \
     -v /opt/ca/sub:/opt/ca \
     -v </path/to/your/users_ca.pub>:/etc/ssh/users_ca.pub \
-    rjrivero/openssh-ca
+    ${USER}/openssl-ca
 ```
 
   - Log into the subordinate CA container as root, and generate a CSR to be signed by your root CA.

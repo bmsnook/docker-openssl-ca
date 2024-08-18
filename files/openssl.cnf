@@ -78,9 +78,9 @@ commonName                      = Common Name
 emailAddress                    = Email Address
 
 # Optionally, specify some defaults.
-countryName_default             = ES
-stateOrProvinceName_default     = Madrid
-localityName_default            = Madrid
+countryName_default             = US
+stateOrProvinceName_default     = Georgia
+localityName_default            = Atlanta
 0.organizationName_default      = PKI
 organizationalUnitName_default  =
 emailAddress_default            =

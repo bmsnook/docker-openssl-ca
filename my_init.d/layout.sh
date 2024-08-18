@@ -26,10 +26,10 @@ for CNFFILE in openssl.cnf openssl.root.cnf; do
     sed -i '/^crlDistributionPoints.*/d' "${CNFFILE}"
     if [ ! -z $CRL_URL ]; then
         # Add new CRL DPs to usr_cert and server_cert sections
-	for MARKER in usr_cert server_cert; do
+	    for MARKER in usr_cert server_cert; do
             sed -i "/${MARKER}/a crlDistributionPoints = URI:${CRL_URL}" \
                 "${CNFFILE}"
-	done
+	    done
     fi
 done
 

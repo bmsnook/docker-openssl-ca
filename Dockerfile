@@ -6,6 +6,12 @@ FROM rjrivero/baseimage-ssh
 #        openssl && \
 #    apt-get clean && rm -rf /tmp/* /var/cache/apt/*
 
+# Sudo is not already included in phusion/baseimage; 
+#   install it if planning to connect as a non-root user
+RUN apt -q update && apt install -y \
+    sudo \
+    apt clean && rm -rf /tmp/* /var/cache/apt/*
+
 # CA files path
 ENV CA_PATH /opt/ca
 VOLUME      /opt/ca
