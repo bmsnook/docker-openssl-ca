@@ -1,4 +1,4 @@
-FROM rjrivero/baseimage-ssh
+FROM bmsnook/baseimage-ssh
 
 # Openssl already included in phusion/baseimage
 # RUN apt-get -q update && \
@@ -8,11 +8,15 @@ FROM rjrivero/baseimage-ssh
 
 # Sudo is not already included in phusion/baseimage; 
 #   install it if planning to connect as a non-root user
-RUN apt -q update && \
-    DEBIAN_FRONTEND=noninteractive apt install -y && \
-        sudo && \
-    DEBIAN_FRONTEND=noninteractive apt clean && \
-    rm -rf /tmp/* /var/cache/apt/*
+
+RUN ls -al /etc/
+
+# RUN apt -q update && \
+#     DEBIAN_FRONTEND=noninteractive apt install -y \
+#         sudo \
+#         zsh && \
+#     DEBIAN_FRONTEND=noninteractive apt clean && \
+#     rm -rf /tmp/* /var/cache/apt/*
 
 # CA files path
 ENV CA_PATH=/opt/ca
